@@ -6,7 +6,7 @@
 /*   By: rfani <rfani@student.42firenze.it>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 13:42:24 by rfani             #+#    #+#             */
-/*   Updated: 2025/07/11 17:15:48 by rfani            ###   ########.fr       */
+/*   Updated: 2025/07/11 18:24:24 by rfani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	sig_handler(int sig, siginfo_t *info, void *context);
 int	main(void)
 {
 	struct sigaction	sa;
-	int	pid;
+	int					pid;
 
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = &sig_handler;
@@ -32,7 +32,7 @@ int	main(void)
 	return (0);
 }
 
-void sig_handler(int sig, siginfo_t *info, void *context)
+void	sig_handler(int sig, siginfo_t *info, void *context)
 {
 	static int	bit_count = 0;
 	static char	c = 0;
