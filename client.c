@@ -6,7 +6,7 @@
 /*   By: rfani <rfani@student.42firenze.it>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 17:29:24 by rfani             #+#    #+#             */
-/*   Updated: 2025/07/11 18:27:17 by rfani            ###   ########.fr       */
+/*   Updated: 2025/07/11 18:55:31 by rfani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ int	main(int argc, char **argv)
 	char				*message;
 	struct sigaction	sa;
 
+	if (argc != 3)
+	{
+		ft_printf("Usage: %s <PID> <message>\n", argv[0]);
+		return (1);
+	}
 	sa.sa_handler = &ack_handler;
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = 0;
