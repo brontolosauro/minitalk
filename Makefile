@@ -1,14 +1,8 @@
 CC		= cc
-CFLAGS	= -g -Wall -Werror -Wextra
+CFLAGS	= -Wall -Wextra -Werror -g
 
 SERVER	= server
 CLIENT	= client
-
-SRCS_SERVER = server.c
-SRCS_CLIENT	= client.c
-
-OBJS_SERVER = $(SRCS_SERVER:%.c=%.o)
-OBJS_CLINET = $(SRCS_CLIENT:%.c=%.o)
 
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -16,12 +10,12 @@ LIBFT = $(LIBFT_DIR)/libft.a
 all: $(LIBFT) $(SERVER) $(CLIENT)
 
 $(LIBFT):
-	make -C $(LIBFTDIR)
+	make -C $(LIBFT_DIR)
 
-$(SERVER): $(OBJS_SEVER)
+$(SERVER): server.c
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBFT)
 
-$(CLIENT): $(OBJS_CLIENT)
+$(CLIENT): client.c
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBFT)
 
 clean:
@@ -34,4 +28,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re	
+.PHONY: all clean fclean re
